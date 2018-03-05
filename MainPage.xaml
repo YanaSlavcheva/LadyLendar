@@ -12,12 +12,15 @@
         <Button x:Name="periodStartsBtn" Content="Period starts" HorizontalAlignment="Left" Margin="250,100,0,0" VerticalAlignment="Top" Click="periodStartsBtn_ClickAsync"/>
 
         <TextBlock x:Name="allPeriodsDataTitle" HorizontalAlignment="Left" Margin="50,250,0,0" Text="All Periods Data" TextWrapping="Wrap" VerticalAlignment="Top" Width="256" Height="32"/>
-        <ItemsControl Name="lstMachineFunctions" HorizontalAlignment="Left" Height="428" Margin="50,282,0,0" VerticalAlignment="Top" Width="290">
+        <ItemsControl Name="lstMachineFunctions" HorizontalAlignment="Left" Height="108" Margin="50,282,0,0" VerticalAlignment="Top" Width="672">
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
-                        <TextBox Text="{Binding dateType}"/>
-                        <TextBox Text="{Binding dateValueToString}"/>
+                        <TextBox Text="Period starts on: "/>
+                        <TextBox Text="{Binding periodStartDateValueToString}"/>
+                        <TextBox Text="Period ends on: "/>
+                        <TextBox Text="{Binding periodEndDateValueToString}"/>
+                        <Button Click="OnAddPeriodEndDate">Period Ends Now</Button>
                     </StackPanel>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>

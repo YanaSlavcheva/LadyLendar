@@ -48,9 +48,8 @@ namespace LadyLendar
                 message = $"You set your period to start from { this.newlyAddedPeriodStartDate.ToString("d", CultureInfo.InvariantCulture) }";
                 periodsData.Add(new PeriodInfoItem
                 {
-                    dateType = DateType.periodStarts,
-                    dateValue = this.newlyAddedPeriodStartDate,
-                    dateValueToString = this.newlyAddedPeriodStartDate.ToString("d", CultureInfo.InvariantCulture)
+                    periodStartDateValue = this.newlyAddedPeriodStartDate,
+                    periodStartDateValueToString = this.newlyAddedPeriodStartDate.ToString("d", CultureInfo.InvariantCulture)
                 });
             }
 
@@ -63,20 +62,23 @@ namespace LadyLendar
         {
             this.newlyAddedPeriodStartDate = e.NewDate;
         }
-    }
 
-    public enum DateType
-    {
-        periodStarts = 1,
-        periodEnds = 2
+        private void OnAddPeriodEndDate(object sender, RoutedEventArgs e)
+        {
+            var selectedPeriodData = (sender as FrameworkElement).DataContext as PeriodInfoItem;
+            selectedPeriodData.periodEndDateValue = DateTimeOffset.Now;
+            selectedPeriodData.periodEndDateValueToString = newlyAddedPeriodStartDate.ToString("d", CultureInfo.InvariantCulture);
+        }
     }
 
     public class PeriodInfoItem
     {
-        public DateType dateType { get; set; }
+        public DateTimeOffset periodStartDateValue { get; set; }
 
-        public DateTimeOffset dateValue { get; set; }
+        public string periodStartDateValueToString { get; set; }
 
-        public string dateValueToString { get; set; }
+        public DateTimeOffset periodEndDateValue { get; set; }
+
+        public string periodEndDateValueToString { get; set; }
     } 
 }
