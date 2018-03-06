@@ -41,8 +41,6 @@
             var stream = await synth.SynthesizeTextToStreamAsync(message);
             mediaElement.SetSource(stream, stream.ContentType);
             mediaElement.Play();
-
-            this.daysUntilNextPeriod = (int)(DateTime.Now - newlyAddedPeriodStartDate.AddDays(28)).TotalDays;
         }
     }
 
