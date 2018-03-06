@@ -1,19 +1,13 @@
 ﻿namespace LadyLendar
 {
     using System;
-    using System.Collections.Generic;
     using System.Collections.ObjectModel;
     using System.Globalization;
-    using System.Threading.Tasks;
     using Windows.Media.SpeechSynthesis;
-    using Windows.UI;
-    using Windows.UI.Xaml;
     using Windows.UI.Xaml.Controls;
 
     public sealed partial class MainPage : Page
     {
-        private int daysUntilNextPeriod = Int32.MinValue;
-
         public MainPage()
         {
             this.InitializeComponent();
@@ -34,13 +28,13 @@
 
             if (newlyAddedPeriodStartDate != new DateTimeOffset(DateTime.MinValue, TimeSpan.Zero))
             {
-                message = $"You set your period to start from { newlyAddedPeriodStartDate.ToString("d", CultureInfo.InvariantCulture) }";
+                message = $"You set your period to start from { newlyAddedPeriodStartDate.ToString("D", CultureInfo.InvariantCulture) }";
                 periodsData.Add(new PeriodInfoItem
                 {
                     periodStartDateValue = newlyAddedPeriodStartDate,
-                    periodStartDateValueToString = newlyAddedPeriodStartDate.ToString("d", CultureInfo.InvariantCulture),
+                    periodStartDateValueToString = newlyAddedPeriodStartDate.ToString("D", CultureInfo.InvariantCulture),
                     periodEndDateValue = newlyAddedPeriodStartDate.AddDays(5),
-                    periodEndDateValueToString = newlyAddedPeriodStartDate.AddDays(5).ToString("d", CultureInfo.InvariantCulture)
+                    periodEndDateValueToString = newlyAddedPeriodStartDate.AddDays(5).ToString("D", CultureInfo.InvariantCulture)
                 });
             }
 

@@ -7,22 +7,29 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="#FFF4F0F4">
+        <StackPanel Height="150" Margin="2,31,-2,587">
+            <StackPanel.Background>
+                <ImageBrush Stretch="Uniform" ImageSource="Assets/SplashScreen.scale-200.png"/>
+            </StackPanel.Background>
+        </StackPanel>
 
-        <TextBlock x:Name="pickPeriodStartDate" HorizontalAlignment="Left" Margin="50,25,0,0" Text="Pick period start date" TextWrapping="Wrap" VerticalAlignment="Top" Width="298" Height="27"/>
-        <DatePicker HorizontalAlignment="Left" Margin="50,50,0,0" VerticalAlignment="Top" DateChanged="DatePicker_DateChanged"/>
+        <TextBlock x:Name="pickPeriodStartDate" HorizontalAlignment="Left" Margin="50,225,0,0" Text="Pick period start date" TextWrapping="Wrap" VerticalAlignment="Top" Width="298" Height="27" FontFamily="Century Gothic" FontWeight="Bold" FontStyle="Italic" FontSize="15"/>
+        <DatePicker HorizontalAlignment="Left" Margin="50,250,0,0" VerticalAlignment="Top" DateChanged="DatePicker_DateChanged" FontFamily="Century Gothic" FontWeight="Bold" FontStyle="Italic"/>
 
-        <TextBlock x:Name="daysUntilNextPeriodLabel" HorizontalAlignment="Left" Margin="50,75,0,0" Text="{ Binding daysUntilNextPeriod }" TextWrapping="Wrap" VerticalAlignment="Top" Width="298" Height="27"/>
-        
-        <TextBlock x:Name="allPeriodsDataTitle" HorizontalAlignment="Left" Margin="50,250,0,0" Text="All Periods Data (Period lenght is 5 days)" TextWrapping="Wrap" VerticalAlignment="Top" Width="298" Height="27"/>
-        <ItemsControl Name="lstMachineFunctions" HorizontalAlignment="Left" Height="108" Margin="50,282,0,0" VerticalAlignment="Top" Width="672">
+        <TextBlock x:Name="allPeriodsDataTitle" HorizontalAlignment="Left" Margin="50,300,0,0" Text="All Periods Data (Period length is 5 days)" TextWrapping="Wrap" VerticalAlignment="Top" Width="298" Height="27" FontFamily="Century Gothic" FontSize="15" FontWeight="Bold" FontStyle="Italic"/>
+        <ItemsControl Name="lstMachineFunctions" HorizontalAlignment="Left" Height="384" Margin="50,336,0,0" VerticalAlignment="Top" Width="296" FontFamily="Century Gothic" FontStyle="Italic">
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <StackPanel Orientation="Vertical">
-                        <TextBlock Text="Period starts on: "/>
-                        <TextBlock Text="{Binding periodStartDateValueToString}"/>
-                        <TextBlock Text="Period ends on: "/>
-                        <TextBlock Text="{Binding periodEndDateValueToString}"/>
+                    <StackPanel Orientation="Vertical" Margin="0,0,0,15">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Start: "/>
+                            <TextBlock Text="{ Binding periodStartDateValueToString }"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="End: "/>
+                            <TextBlock Text="{ Binding periodEndDateValueToString }"/>
+                        </StackPanel>
                     </StackPanel>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
