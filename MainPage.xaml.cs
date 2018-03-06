@@ -1,36 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Globalization;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
-using Windows.Media.SpeechSynthesis;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
-
-// The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
-
-namespace LadyLendar
+﻿namespace LadyLendar
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Collections.ObjectModel;
+    using System.Globalization;
+    using System.Threading.Tasks;
+    using Windows.Media.SpeechSynthesis;
+    using Windows.UI;
+    using Windows.UI.Xaml;
+    using Windows.UI.Xaml.Controls;
+
     public sealed partial class MainPage : Page
     {
         private DateTimeOffset newlyAddedPeriodStartDate = new DateTimeOffset(DateTime.MinValue, TimeSpan.Zero);
-        ////private IList<PeriodInfoItem> periodData = new List<PeriodInfoItem>();
+        private IList<PeriodInfoItem> periodData = new List<PeriodInfoItem>();
+        //private int periodLength = Int32.MinValue;
 
         public MainPage()
         {
             this.InitializeComponent();
             this.NewlyAddedPeriodStartDate = newlyAddedPeriodStartDate;
             lstMachineFunctions.ItemsSource = periodsData = new ObservableCollection<PeriodInfoItem>();
-
         }
 
         public DateTimeOffset NewlyAddedPeriodStartDate { get; set; }
@@ -49,7 +39,9 @@ namespace LadyLendar
                 periodsData.Add(new PeriodInfoItem
                 {
                     periodStartDateValue = this.newlyAddedPeriodStartDate,
-                    periodStartDateValueToString = this.newlyAddedPeriodStartDate.ToString("d", CultureInfo.InvariantCulture)
+                    periodStartDateValueToString = this.newlyAddedPeriodStartDate.ToString("d", CultureInfo.InvariantCulture),
+                    periodEndDateValue = this.newlyAddedPeriodStartDate.AddDays(5),
+                    periodEndDateValueToString = this.newlyAddedPeriodStartDate.AddDays(5).ToString("d", CultureInfo.InvariantCulture)
                 });
             }
 
@@ -61,13 +53,6 @@ namespace LadyLendar
         private void DatePicker_DateChanged(object sender, DatePickerValueChangedEventArgs e)
         {
             this.newlyAddedPeriodStartDate = e.NewDate;
-        }
-
-        private void OnAddPeriodEndDate(object sender, RoutedEventArgs e)
-        {
-            var selectedPeriodData = (sender as FrameworkElement).DataContext as PeriodInfoItem;
-            selectedPeriodData.periodEndDateValue = DateTimeOffset.Now;
-            selectedPeriodData.periodEndDateValueToString = newlyAddedPeriodStartDate.ToString("d", CultureInfo.InvariantCulture);
         }
     }
 
