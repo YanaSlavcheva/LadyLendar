@@ -8,11 +8,10 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        
-        
-        
+
+
+
         <DatePicker HorizontalAlignment="Left" Margin="50,50,0,0" VerticalAlignment="Top" DateChanged="DatePicker_DateChanged"/>
-        <Button x:Name="periodStartsBtn" Content="Add new period start" HorizontalAlignment="Left" Margin="184,98,0,0" VerticalAlignment="Top" Click="periodStartsBtn_ClickAsync"/>
 
         <TextBlock x:Name="allPeriodsDataTitle" HorizontalAlignment="Left" Margin="50,250,0,0" Text="All Periods Data (Period lenght is 5 days)" TextWrapping="Wrap" VerticalAlignment="Top" Width="298" Height="27"/>
         <ItemsControl Name="lstMachineFunctions" HorizontalAlignment="Left" Height="108" Margin="50,282,0,0" VerticalAlignment="Top" Width="672">
@@ -20,7 +19,7 @@
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
                         <TextBox Text="Period starts on: "/>
-                        <TextBox Text="{Binding periodEndDateValueToString}"/>
+                        <TextBox Text="{Binding periodStartDateValueToString}"/>
                         <TextBox Text="Period ends on: "/>
                         <TextBox Text="{Binding periodEndDateValueToString}"/>
                     </StackPanel>
