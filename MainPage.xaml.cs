@@ -4,6 +4,7 @@
     using System.Collections.ObjectModel;
     using System.Globalization;
     using Windows.Media.SpeechSynthesis;
+    using Windows.Storage;
     using Windows.UI.Xaml.Controls;
 
     public sealed partial class MainPage : Page
@@ -13,6 +14,8 @@
             this.InitializeComponent();
             lstMachineFunctions.ItemsSource = periodsData = new ObservableCollection<PeriodInfoItem>();
         }
+
+        Windows.Storage.StorageFolder localFolder = Windows.Storage.ApplicationData.Current.LocalFolder;
 
         public DateTimeOffset NewlyAddedPeriodStartDate { get; set; }
 
@@ -41,6 +44,29 @@
             var stream = await synth.SynthesizeTextToStreamAsync(message);
             mediaElement.SetSource(stream, stream.ContentType);
             mediaElement.Play();
+        }
+
+        private async void WriteTimestamp()
+        {
+            Windows.Globalization.DateTimeFormatting.DateTimeFormatter formatter =
+                new Windows.Globalization.DateTimeFormatting.DateTimeFormatter("longtime");
+
+            StorageFile sampleFile = await localFolder.CreateFileAsync("dataFile.txt", CreationCollisionOption.OpenIfExists);
+            await FileIO.WriteTextAsync(sampleFile, formatter.Format(DateTimeOffset.Now));
+        }
+
+        async void ReadTimestamp()
+        {
+            try
+            {
+                StorageFile sampleFile = await localFolder.GetFileAsync("dataFile.txt");
+                String timestamp = await FileIO.ReadTextAsync(sampleFile);
+                // Data is contained in timestamp
+            }
+            catch (Exception)
+            {
+                // Timestamp not found
+            }
         }
     }
 
