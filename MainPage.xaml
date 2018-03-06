@@ -9,19 +9,20 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-
-
+        <TextBlock x:Name="pickPeriodStartDate" HorizontalAlignment="Left" Margin="50,25,0,0" Text="Pick period start date" TextWrapping="Wrap" VerticalAlignment="Top" Width="298" Height="27"/>
         <DatePicker HorizontalAlignment="Left" Margin="50,50,0,0" VerticalAlignment="Top" DateChanged="DatePicker_DateChanged"/>
 
+        <TextBlock x:Name="daysUntilNextPeriodLabel" HorizontalAlignment="Left" Margin="50,75,0,0" Text="{ Binding daysUntilNextPeriod }" TextWrapping="Wrap" VerticalAlignment="Top" Width="298" Height="27"/>
+        
         <TextBlock x:Name="allPeriodsDataTitle" HorizontalAlignment="Left" Margin="50,250,0,0" Text="All Periods Data (Period lenght is 5 days)" TextWrapping="Wrap" VerticalAlignment="Top" Width="298" Height="27"/>
         <ItemsControl Name="lstMachineFunctions" HorizontalAlignment="Left" Height="108" Margin="50,282,0,0" VerticalAlignment="Top" Width="672">
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <StackPanel Orientation="Horizontal">
-                        <TextBox Text="Period starts on: "/>
-                        <TextBox Text="{Binding periodStartDateValueToString}"/>
-                        <TextBox Text="Period ends on: "/>
-                        <TextBox Text="{Binding periodEndDateValueToString}"/>
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Text="Period starts on: "/>
+                        <TextBlock Text="{Binding periodStartDateValueToString}"/>
+                        <TextBlock Text="Period ends on: "/>
+                        <TextBlock Text="{Binding periodEndDateValueToString}"/>
                     </StackPanel>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
