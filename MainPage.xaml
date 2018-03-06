@@ -14,11 +14,11 @@
             </StackPanel.Background>
         </StackPanel>
 
-        <TextBlock x:Name="pickPeriodStartDate" HorizontalAlignment="Left" Margin="50,225,0,0" Text="Pick period start date" TextWrapping="Wrap" VerticalAlignment="Top" Width="298" Height="27" FontFamily="Century Gothic" FontWeight="Bold" FontStyle="Italic" FontSize="15"/>
-        <DatePicker HorizontalAlignment="Left" Margin="50,250,0,0" VerticalAlignment="Top" DateChanged="DatePicker_DateChanged" FontFamily="Century Gothic" FontWeight="Bold" FontStyle="Italic"/>
+        <TextBlock x:Name="pickPeriodStartDate" HorizontalAlignment="Center" Margin="0,225,0,0" Text="Pick period start date" TextWrapping="Wrap" VerticalAlignment="Top" Width="298" Height="27" FontFamily="Century Gothic" FontWeight="Bold" FontStyle="Italic" FontSize="15"/>
+        <DatePicker HorizontalAlignment="Center" Margin="0,250,0,0" VerticalAlignment="Top" DateChanged="DatePicker_DateChanged" FontFamily="Century Gothic" FontWeight="Bold" FontStyle="Italic"/>
 
-        <TextBlock x:Name="allPeriodsDataTitle" HorizontalAlignment="Left" Margin="50,300,0,0" Text="All Periods Data (Period length is 5 days)" TextWrapping="Wrap" VerticalAlignment="Top" Width="298" Height="27" FontFamily="Century Gothic" FontSize="15" FontWeight="Bold" FontStyle="Italic"/>
-        <ItemsControl Name="lstMachineFunctions" HorizontalAlignment="Left" Height="384" Margin="50,336,0,0" VerticalAlignment="Top" Width="296" FontFamily="Century Gothic" FontStyle="Italic">
+        <TextBlock x:Name="allPeriodsDataTitle" HorizontalAlignment="Center" Margin="0,300,0,0" Text="All Periods Data (Period length is 5 days)" TextWrapping="Wrap" VerticalAlignment="Top" Width="298" Height="27" FontFamily="Century Gothic" FontSize="15" FontWeight="Bold" FontStyle="Italic"/>
+        <ItemsControl Name="lstMachineFunctions" HorizontalAlignment="Center" Height="384" Margin="0,336,0,0" VerticalAlignment="Top" Width="296" FontFamily="Century Gothic" FontStyle="Italic">
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Vertical" Margin="0,0,0,15">
